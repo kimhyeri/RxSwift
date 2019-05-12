@@ -12,3 +12,4 @@
 
 RxSwift의 목적 : 비동기 작업을 간결하게 쓰고싶다. 
 
+- [Beginning RxSwift](https://github.com/kimhyeri/RxSwift/wiki)
