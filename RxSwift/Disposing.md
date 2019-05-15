@@ -40,13 +40,9 @@ self.disposeBag = DisposeBag()
 ```
 - This will clear old references and cause disposal of resources.
 
-- If that explicit manual disposal is still wanted, use CompositeDisposable. It has the wanted behavior but once that dispose method is called, it will immediately dispose any newly added disposable.  
-명시적인 수동 처리가 여전히 필요한 경우에는 CompositeDisposable을 사용하십시오. 그것은 원하는 동작을 가지지 만 일단 dispose 메소드가 호출되면 새로 추가 된 일회용품을 즉시 처리합니다.
-
-
 ## Take until
 - Additional way to automatically dispose subscription on dealloc is to use takeUntil operator.  
-dealloc에 ​​대한 subscription을 자동으로 처리하는 추가적인 방법은 takeUntil 연산자를 사용하는 것이다.
+dealloc에 ​​대한 subscription을 자동으로 처리하는 추가적인 방법은 takeUntil 연산자를 사용.
 
 ```
 sequence
