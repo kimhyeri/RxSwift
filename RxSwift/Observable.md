@@ -3,7 +3,7 @@
 - ReactiveX에서 옵저버는 Observable을 구독한다.
 - 옵저버는 Obervable이 배출하는 하나 또는 연속된 아이템에 반응한다. (concurrent operations을 가능하게 함) Observable이 객체를 배출할 때까지 기다릴 필요 없이 어떤 객체가 배출되면 그 시점을 감시하는 관찰자 옵저버를 통해 배출 알림을 받기 때문이다.
 
-![ ](./image/ObervableImage.png)
+![ ](./image/ObservableImage.png)
 
 ## Establishing Observers
 
