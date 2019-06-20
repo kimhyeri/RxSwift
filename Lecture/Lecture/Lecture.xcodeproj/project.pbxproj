@@ -52,7 +52,7 @@
 		6A8AC49C22BB6B72004748AB /* LectureUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LectureUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A8AC4A022BB6B72004748AB /* LectureUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LectureUITests.swift; sourceTree = "<group>"; };
 		6A8AC4A222BB6B72004748AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6A8AC4AE22BB6C0D004748AB /* Observables.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Observables.playground; sourceTree = "<group>"; };
+		6A8AC4AE22BB6C0D004748AB /* Observables.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Observables.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		7841B75781B4FBB50390204A /* Pods-LectureUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LectureUITests.debug.xcconfig"; path = "Target Support Files/Pods-LectureUITests/Pods-LectureUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		9BD1EF5061D7E8AB79FE9BDA /* Pods_Lecture.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Lecture.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DC20D7ED88F16277622D7F2 /* Pods_LectureUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LectureUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -110,7 +110,6 @@
 				7841B75781B4FBB50390204A /* Pods-LectureUITests.debug.xcconfig */,
 				DFCDBAAF2701CABBFFE72044 /* Pods-LectureUITests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -574,7 +573,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = H92U9KV5T2;
 				INFOPLIST_FILE = Lecture/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -592,7 +593,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = H92U9KV5T2;
 				INFOPLIST_FILE = Lecture/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
