@@ -53,6 +53,7 @@
 		6A8AC4A022BB6B72004748AB /* LectureUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LectureUITests.swift; sourceTree = "<group>"; };
 		6A8AC4A222BB6B72004748AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6A8AC4AE22BB6C0D004748AB /* Observables.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Observables.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		6A8AC4B122BCCC00004748AB /* Subjects.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Subjects.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		7841B75781B4FBB50390204A /* Pods-LectureUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LectureUITests.debug.xcconfig"; path = "Target Support Files/Pods-LectureUITests/Pods-LectureUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		9BD1EF5061D7E8AB79FE9BDA /* Pods_Lecture.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Lecture.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DC20D7ED88F16277622D7F2 /* Pods_LectureUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LectureUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -138,6 +139,7 @@
 		6A8AC47F22BB6B63004748AB /* Lecture */ = {
 			isa = PBXGroup;
 			children = (
+				6A8AC4B122BCCC00004748AB /* Subjects.playground */,
 				6A8AC4AE22BB6C0D004748AB /* Observables.playground */,
 				6A8AC48022BB6B63004748AB /* AppDelegate.swift */,
 				6A8AC48222BB6B63004748AB /* ViewController.swift */,
