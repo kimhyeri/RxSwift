@@ -22,8 +22,11 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="672"/>
                             </imageView>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nub-sw-ReE">
-                                <rect key="frame" x="159" y="792" width="96" height="30"/>
+                                <rect key="frame" x="159" y="768" width="96" height="30"/>
                                 <state key="normal" title="APPLY FILTER"/>
+                                <connections>
+                                    <action selector="applyFilterButtonPressed" destination="BYZ-38-t0r" eventType="touchUpInside" id="Xqg-GZ-sYO"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -32,7 +35,7 @@
                             <constraint firstItem="wgz-kx-3xa" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="KRB-CW-vxX"/>
                             <constraint firstItem="wgz-kx-3xa" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="Szl-RW-gZh"/>
                             <constraint firstItem="Nub-sw-ReE" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="qyl-Wv-eoG"/>
-                            <constraint firstItem="Nub-sw-ReE" firstAttribute="top" secondItem="wgz-kx-3xa" secondAttribute="bottom" constant="32" id="sOd-Wg-nUn"/>
+                            <constraint firstItem="Nub-sw-ReE" firstAttribute="top" secondItem="wgz-kx-3xa" secondAttribute="bottom" constant="8" id="sOd-Wg-nUn"/>
                             <constraint firstItem="wgz-kx-3xa" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.75" id="zUL-lZ-vVf"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
