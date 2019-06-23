@@ -14,6 +14,7 @@ class PhotosCollectionViewController: UICollectionViewController {
 
     // expose observable
     private let selectedPhotoSubject = PublishSubject<UIImage>()
+    
     var selectedPhoto: Observable<UIImage> {
         return selectedPhotoSubject.asObservable()
     }

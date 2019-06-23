@@ -12,27 +12,48 @@ import RxSwift
 class ViewController: UIViewController {
 
     @IBOutlet weak var photoImageView: UIImageView!
+    @IBOutlet weak var applyFilterButton: UIButton!
     
     let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupNavigation()
+    }
+    
+    private func setupNavigation() {
         self.navigationController?.navigationBar.prefersLargeTitles = true
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let navigationC = segue.destination as? UINavigationController, 
-            let photosVC = navigationC.viewControllers.first as? PhotosCollectionViewController else  {
+            let photosVC = navigationC.viewControllers.first as? PhotosCollectionViewController else {
                 return
         }
         
         photosVC.selectedPhoto.subscribe(onNext: { [weak self] photo in 
             guard let self = self else { return } 
-            self.photoImageView.image = photo
+            
+            DispatchQueue.main.async {
+                self.updateUI(with: photo)
+            }
         }).disposed(by: disposeBag)
-        
+    }
+    
+    private func updateUI(with image: UIImage) {
+        self.photoImageView.image = image
+        self.applyFilterButton.isHidden = false
     }
         
+    @IBAction func applyFilterButtonPressed() {
+        guard let sourceImage = self.photoImageView.image else { return }
+        
+        FilterService().applyFilter(to: sourceImage) { filteredImage in 
+            DispatchQueue.main.async {
+                self.photoImageView.image = filteredImage
+            }
+        }
+    }
 }
 
