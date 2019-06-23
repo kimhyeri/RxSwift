@@ -12,6 +12,12 @@ import Photos
 
 class PhotosCollectionViewController: UICollectionViewController {
 
+    // expose observable
+    private let selectedPhotoSubject = PublishSubject<UIImage>()
+    var selectedPhoto: Observable<UIImage> {
+        return selectedPhotoSubject.asObservable()
+    }
+    
     private var images = [PHAsset]()
     
     override func viewDidLoad() {
@@ -65,5 +71,28 @@ extension PhotosCollectionViewController {
         }
         
         return cell
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        // PHAsset to Image
+        let selectedAsset = self.images[indexPath.row]
+        // ThumbnailImage to BigImage
+        PHImageManager.default().requestImage(for: selectedAsset, targetSize: CGSize(width: 300, height: 300), contentMode: .aspectFit, options: nil) { [weak self] (image, info) in
+            guard let self = self else { return }
+            guard let info = info else { return }
+            
+            let isDegradedImage = info["PHImageResultIsDegradedKey"] as! Bool
+            
+            // if it is not thumbnail Image
+        
+            if !isDegradedImage {
+                // actually get the image
+                if let image = image {
+                    self.selectedPhotoSubject.onNext(image)
+                    self.dismiss(animated: true, completion: nil)
+                }
+            }
+        }
     }
 }
