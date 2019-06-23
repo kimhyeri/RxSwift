@@ -12,8 +12,9 @@ import Photos
 
 class PhotosCollectionViewController: UICollectionViewController {
 
-    // expose observable
+    // Expose observable
     private let selectedPhotoSubject = PublishSubject<UIImage>()
+    private let cellId = "Cell"
     
     var selectedPhoto: Observable<UIImage> {
         return selectedPhotoSubject.asObservable()
@@ -31,46 +32,52 @@ class PhotosCollectionViewController: UICollectionViewController {
         PHPhotoLibrary.requestAuthorization({ [weak self] status in
             if status == .authorized {
                 guard let self = self else { return }
-
-                // access the photo from library
-                // only image fetching
                 
-                let assets = PHAsset.fetchAssets(with: PHAssetMediaType.image, options: nil)
+                // Access the photo from library
+                // Only image fetching
+                
+                let assets = PHAsset.fetchAssets(with: PHAssetMediaType.image,
+                                                 options: nil
+                )
+                
                 assets.enumerateObjects { (object, count, stop) in
                     self.images.append(object)
                 }
                 
-                // most recent image on the top
+                // Most recent image on the top
                 self.images.reverse()
                 
                 DispatchQueue.main.async {
                     self.collectionView.reloadData()                    
                 }
+                
+            } else if status == .denied {
+                print("User denied")
             }
         })
     }
-    
 }
 
 extension PhotosCollectionViewController {
-    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.images.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as? PhotosCollectionViewCell else {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as? PhotosCollectionViewCell else {
             return UICollectionViewCell()
         }
-        
         let asset = self.images[indexPath.row]
         let manager = PHImageManager.default()
-        manager.requestImage(for: asset, targetSize: CGSize(width: 100, height: 100), contentMode: .aspectFit, options: nil) { image, _ in
+        let targetSize = CGSize(width: 100, height: 100)
+        manager.requestImage(for: asset,
+                             targetSize: targetSize,
+                             contentMode: .aspectFit,
+                             options: nil) { image, _ in
             DispatchQueue.main.async {
                 cell.photoImageView.image = image
             }
         }
-        
         return cell
     }
     
@@ -78,15 +85,19 @@ extension PhotosCollectionViewController {
         
         // PHAsset to Image
         let selectedAsset = self.images[indexPath.row]
+        let targetSize = CGSize(width: 300, height: 300)
+        
         // ThumbnailImage to BigImage
-        PHImageManager.default().requestImage(for: selectedAsset, targetSize: CGSize(width: 300, height: 300), contentMode: .aspectFit, options: nil) { [weak self] (image, info) in
+        PHImageManager.default().requestImage(for: selectedAsset,
+                                              targetSize: targetSize,
+                                              contentMode: .aspectFit,
+                                              options: nil) { [weak self] (image, info) in
             guard let self = self else { return }
             guard let info = info else { return }
             
             let isDegradedImage = info["PHImageResultIsDegradedKey"] as! Bool
             
-            // if it is not thumbnail Image
-        
+            // if it is not thumbnail Image        
             if !isDegradedImage {
                 // actually get the image
                 if let image = image {
