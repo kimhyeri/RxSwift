@@ -67,6 +67,7 @@ extension PhotosCollectionViewController {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as? PhotosCollectionViewCell else {
             return UICollectionViewCell()
         }
+        
         let asset = self.images[indexPath.row]
         let manager = PHImageManager.default()
         let targetSize = CGSize(width: 100, height: 100)

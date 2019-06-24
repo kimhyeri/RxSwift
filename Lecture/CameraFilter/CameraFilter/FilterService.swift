@@ -30,14 +30,15 @@ class FilterService {
     
     private func applyFilter(to inputImage: UIImage, completion: @escaping ((UIImage) -> ())) {
         guard let filter = filterName else { return }
-        guard let sourceImage = CIImage(image: inputImage) else { return }
-        guard let outputImage = filter.outputImage else { return }
-        guard let cgImage = self.context.createCGImage(outputImage, from: outputImage.extent) else { return }
-        
         filter.setValue(5.0, forKey: kCIInputImageKey)
+        
+        guard let sourceImage = CIImage(image: inputImage) else { return }
         filter.setValue(sourceImage, forKey: kCIInputImageKey)
         
-        let processImage = UIImage(cgImage: cgImage, scale: inputImage.scale, orientation: inputImage.imageOrientation)
-        completion(processImage)
+        if let outerImage = filter.outputImage, 
+            let cgImg = self.context.createCGImage(outerImage, from: outerImage.extent) {
+            let processImage = UIImage(cgImage: cgImg, scale: inputImage.scale, orientation: inputImage.imageOrientation)
+            completion(processImage)
+        }
     }
 }
