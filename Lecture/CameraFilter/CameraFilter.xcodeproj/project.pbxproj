@@ -15,6 +15,7 @@
 		6A8AC4D122BF8BF8004748AB /* PhotosCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A8AC4D022BF8BF8004748AB /* PhotosCollectionViewController.swift */; };
 		6A8AC4D322BF94FF004748AB /* PhotosCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A8AC4D222BF94FF004748AB /* PhotosCollectionViewCell.swift */; };
 		6A8AC4D522BFA34E004748AB /* FilterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A8AC4D422BFA34E004748AB /* FilterService.swift */; };
+		6A8AC4D922C347F9004748AB /* CellReusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A8AC4D822C347F9004748AB /* CellReusable.swift */; };
 		C8477033F509CB1B4BE961D3 /* Pods_CameraFilter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79F5A238C46C43D9C9D3D1B0 /* Pods_CameraFilter.framework */; };
 /* End PBXBuildFile section */
 
@@ -31,6 +32,7 @@
 		6A8AC4D022BF8BF8004748AB /* PhotosCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosCollectionViewController.swift; sourceTree = "<group>"; };
 		6A8AC4D222BF94FF004748AB /* PhotosCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosCollectionViewCell.swift; sourceTree = "<group>"; };
 		6A8AC4D422BFA34E004748AB /* FilterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterService.swift; sourceTree = "<group>"; };
+		6A8AC4D822C347F9004748AB /* CellReusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellReusable.swift; sourceTree = "<group>"; };
 		79F5A238C46C43D9C9D3D1B0 /* Pods_CameraFilter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CameraFilter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -72,6 +74,7 @@
 				6A8AC4D022BF8BF8004748AB /* PhotosCollectionViewController.swift */,
 				6A8AC4D222BF94FF004748AB /* PhotosCollectionViewCell.swift */,
 				6A8AC4D422BFA34E004748AB /* FilterService.swift */,
+				6A8AC4D822C347F9004748AB /* CellReusable.swift */,
 				6A8AC4C222BF88CB004748AB /* Main.storyboard */,
 				6A8AC4C522BF88CF004748AB /* Assets.xcassets */,
 				6A8AC4C722BF88CF004748AB /* LaunchScreen.storyboard */,
@@ -219,6 +222,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6A8AC4D922C347F9004748AB /* CellReusable.swift in Sources */,
 				6A8AC4D122BF8BF8004748AB /* PhotosCollectionViewController.swift in Sources */,
 				6A8AC4D522BFA34E004748AB /* FilterService.swift in Sources */,
 				6A8AC4D322BF94FF004748AB /* PhotosCollectionViewCell.swift in Sources */,

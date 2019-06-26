@@ -14,7 +14,6 @@ class PhotosCollectionViewController: UICollectionViewController {
 
     // Expose observable
     private let selectedPhotoSubject = PublishSubject<UIImage>()
-    private let cellId = "Cell"
     
     var selectedPhoto: Observable<UIImage> {
         return selectedPhotoSubject.asObservable()
@@ -64,7 +63,7 @@ extension PhotosCollectionViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as? PhotosCollectionViewCell else {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotosCollectionViewCell.reuseIdentifier, for: indexPath) as? PhotosCollectionViewCell else {
             return UICollectionViewCell()
         }
         

@@ -13,3 +13,5 @@ class PhotosCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var photoImageView: UIImageView!
     
 }
+
+extension PhotosCollectionViewCell: CellReusable {}
