@@ -21,10 +21,6 @@ class ViewController: UIViewController {
         
         setupNavigation()
     }
-    
-    private func setupNavigation() {
-        self.navigationController?.navigationBar.prefersLargeTitles = true
-    }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let navigationC = segue.destination as? UINavigationController, 
@@ -37,6 +33,10 @@ class ViewController: UIViewController {
                 self.updateUI(with: photo)
             }
         }).disposed(by: disposeBag)
+    }
+    
+    private func setupNavigation() {
+        self.navigationController?.navigationBar.prefersLargeTitles = true
     }
     
     private func updateUI(with image: UIImage) {

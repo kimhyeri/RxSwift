@@ -11,7 +11,7 @@ import RxSwift
 import Photos
 
 class PhotosCollectionViewController: UICollectionViewController {
-
+    
     // Expose observable
     private let selectedPhotoSubject = PublishSubject<UIImage>()
     
@@ -24,9 +24,9 @@ class PhotosCollectionViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         populatePhotos()
-
+        
     }
-
+    
     func populatePhotos() {
         PHPhotoLibrary.requestAuthorization({ [weak self] status in
             if status == .authorized {
@@ -57,6 +57,7 @@ class PhotosCollectionViewController: UICollectionViewController {
     }
 }
 
+//MARK: CollectionView Datasource
 extension PhotosCollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.images.count
@@ -74,13 +75,16 @@ extension PhotosCollectionViewController {
                              targetSize: targetSize,
                              contentMode: .aspectFit,
                              options: nil) { image, _ in
-            DispatchQueue.main.async {
-                cell.photoImageView.image = image
-            }
+                                DispatchQueue.main.async {
+                                    cell.photoImageView.image = image
+                                }
         }
         return cell
     }
-    
+}
+
+//MARK: CollectionView Delegate
+extension PhotosCollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         // PHAsset to Image
@@ -91,7 +95,8 @@ extension PhotosCollectionViewController {
         PHImageManager.default().requestImage(for: selectedAsset,
                                               targetSize: targetSize,
                                               contentMode: .aspectFit,
-                                              options: nil) { [weak self] (image, info) in
+                                              options: nil
+        ) { [weak self] (image, info) in
             guard let self = self else { return }
             guard let info = info else { return }
             
