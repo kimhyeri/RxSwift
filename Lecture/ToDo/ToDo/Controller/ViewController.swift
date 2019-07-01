@@ -55,11 +55,13 @@ class ViewController: UIViewController {
     private func filterTasks(by priority: Priority?) {
         if priority == nil {
             self.filteredTasks = self.tasks.value
+            self.tableView.reloadData()
         } else {
             self.tasks.map { tasks in 
                 return tasks.filter({ $0.priority == priority! })
                 }.subscribe(onNext: { [weak self](tasks) in
                     self?.filteredTasks = tasks
+                    self?.tableView.reloadData()
                 }).disposed(by: disposeBag)
         }
     }
@@ -70,16 +72,14 @@ class ViewController: UIViewController {
     }
 }
 
-extension ViewController: UITableViewDelegate, UITableViewDataSource {
-    
+extension ViewController: UITableViewDelegate, UITableViewDataSource {    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        return 5
+        return filteredTasks.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? ToDoTableViewCell else { return UITableViewCell() }
-        
+        cell.textLabel?.text = filteredTasks[indexPath.row].title
         return cell
     }
 }
