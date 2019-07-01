@@ -15,6 +15,7 @@ class AddTaskViewController: UIViewController {
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     
     private let taskSubject = PublishSubject<Task>() 
+    let disposeBag = DisposeBag()
     
     var taskSubjectObservable: Observable<Task> {
         return taskSubject.asObservable()
@@ -33,4 +34,6 @@ class AddTaskViewController: UIViewController {
         
         self.dismiss(animated: true, completion: nil)
     }
+    
+
 }

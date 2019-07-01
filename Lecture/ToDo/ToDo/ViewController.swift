@@ -7,15 +7,22 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class ViewController: UIViewController {
 
     @IBOutlet weak var prioritySegmentedControl: UISegmentedControl!
     @IBOutlet weak var tableView: UITableView!
     
+    let disposeBag = DisposeBag()
+    private var tasks = BehaviorRelay<[Task]>(value: [])
+    private var filteredTasks = [Task]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
+        
     }   
     
     func setupTableView() {
@@ -25,6 +32,37 @@ class ViewController: UIViewController {
         self.navigationController?.title = "ToDo List"
     }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let navC = segue.destination as? UINavigationController, 
+            let addTVC = navC.viewControllers.first as? AddTaskViewController else {
+                return
+        }
+        
+        addTVC.taskSubjectObservable
+            .subscribe(onNext: { [weak self] task in 
+                guard let self = self else { return }
+                let priority = Priority(rawValue: self.prioritySegmentedControl.selectedSegmentIndex - 1)
+                
+                
+                var existingTasks = self.tasks.value
+                existingTasks.append(task)
+                self.tasks.accept(existingTasks)
+                
+                self.filterTasks(by: priority)
+            }).disposed(by: disposeBag)
+    }
+    
+    private func filterTasks(by priority: Priority?) {
+        if priority == nil {
+            self.filteredTasks = self.tasks.value
+        } else {
+            self.tasks.map { tasks in 
+                return tasks.filter({ $0.priority == priority! })
+                }.subscribe(onNext: { [weak self](tasks) in
+                    self?.filteredTasks = tasks
+                }).disposed(by: disposeBag)
+        }
+    }
 }
 
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
