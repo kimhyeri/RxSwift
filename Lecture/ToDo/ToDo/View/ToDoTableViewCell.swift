@@ -22,3 +22,5 @@ class ToDoTableViewCell: UITableViewCell {
     }
 
 }
+
+extension ToDoTableViewCell: Reusable {}

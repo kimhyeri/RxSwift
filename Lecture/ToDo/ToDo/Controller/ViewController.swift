@@ -22,16 +22,9 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
-        
+        setupNavigation()
     }   
     
-    func setupTableView() {
-        tableView.delegate = self
-        tableView.dataSource = self
-        self.navigationController?.navigationBar.prefersLargeTitles = true
-        self.navigationController?.title = "ToDo List"
-    }
-
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let navC = segue.destination as? UINavigationController, 
             let addTVC = navC.viewControllers.first as? AddTaskViewController else {
@@ -41,8 +34,8 @@ class ViewController: UIViewController {
         addTVC.taskSubjectObservable
             .subscribe(onNext: { [weak self] task in 
                 guard let self = self else { return }
-                let priority = Priority(rawValue: self.prioritySegmentedControl.selectedSegmentIndex - 1)
-                
+                let segmentIndex = self.prioritySegmentedControl.selectedSegmentIndex - 1
+                let priority = Priority(rawValue: segmentIndex)
                 
                 var existingTasks = self.tasks.value
                 existingTasks.append(task)
@@ -52,6 +45,15 @@ class ViewController: UIViewController {
             }).disposed(by: disposeBag)
     }
     
+    private func setupNavigation() {
+        self.navigationController?.navigationBar.prefersLargeTitles = true
+    }
+    
+    private func setupTableView() {
+        tableView.delegate = self
+        tableView.dataSource = self
+    }
+
     private func filterTasks(by priority: Priority?) {
         if priority == nil {
             self.filteredTasks = self.tasks.value
@@ -78,7 +80,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? ToDoTableViewCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: ToDoTableViewCell.reuseIdentifier, for: indexPath) as? ToDoTableViewCell else { return UITableViewCell() }
         cell.textLabel?.text = filteredTasks[indexPath.row].title
         return cell
     }
