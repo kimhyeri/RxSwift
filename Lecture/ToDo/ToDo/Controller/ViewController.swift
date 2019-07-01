@@ -63,6 +63,11 @@ class ViewController: UIViewController {
                 }).disposed(by: disposeBag)
         }
     }
+    
+    @IBAction func segmentValueChanged(_ sender: Any) {
+        let priority = Priority(rawValue: prioritySegmentedControl.selectedSegmentIndex - 1)
+        filterTasks(by: priority)
+    }
 }
 
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
