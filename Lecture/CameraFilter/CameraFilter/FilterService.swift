@@ -12,7 +12,7 @@ import RxSwift
 
 class FilterService {
     
-    private var context: CIContext
+    private let context: CIContext
     private let filterName = CIFilter(name: "CISepiaTone")
     
     init() {
@@ -37,7 +37,10 @@ class FilterService {
         
         if let outerImage = filter.outputImage, 
             let cgImg = self.context.createCGImage(outerImage, from: outerImage.extent) {
-            let processImage = UIImage(cgImage: cgImg, scale: inputImage.scale, orientation: inputImage.imageOrientation)
+            let processImage = UIImage(cgImage: cgImg,
+                                       scale: inputImage.scale,
+                                       orientation: inputImage.imageOrientation
+            )
             completion(processImage)
         }
     }
