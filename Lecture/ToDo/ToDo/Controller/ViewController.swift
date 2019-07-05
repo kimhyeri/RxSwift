@@ -15,7 +15,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var prioritySegmentedControl: UISegmentedControl!
     @IBOutlet weak var tableView: UITableView!
     
-    let disposeBag = DisposeBag()
+    private let disposeBag = DisposeBag()
     private var tasks = BehaviorRelay<[Task]>(value: [])
     private var filteredTasks = [Task]()
     
@@ -69,11 +69,13 @@ class ViewController: UIViewController {
     }
     
     @IBAction func segmentValueChanged(_ sender: Any) {
-        let priority = Priority(rawValue: prioritySegmentedControl.selectedSegmentIndex - 1)
+        let segmentedIndex = prioritySegmentedControl.selectedSegmentIndex - 1
+        let priority = Priority(rawValue: segmentedIndex)
         filterTasks(by: priority)
     }
 }
 
+//MARK: UITableViewDataSource, UITableViewDelegate
 extension ViewController: UITableViewDelegate, UITableViewDataSource {    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return filteredTasks.count
