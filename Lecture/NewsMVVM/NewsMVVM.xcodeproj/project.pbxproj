@@ -54,7 +54,6 @@
 				4662CFC5A5E1DF2BAB1883FF /* Pods-NewsMVVM.debug.xcconfig */,
 				2E0875BEF0D5AE072E5DD6F2 /* Pods-NewsMVVM.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -79,6 +78,7 @@
 		6A828BC522D662680072E943 /* NewsMVVM */ = {
 			isa = PBXGroup;
 			children = (
+				6A828BD822D667D30072E943 /* Controllers */,
 				6A828BC622D662680072E943 /* AppDelegate.swift */,
 				6A828BC822D662680072E943 /* ViewController.swift */,
 				6A828BCA22D662680072E943 /* Main.storyboard */,
@@ -87,6 +87,13 @@
 				6A828BD222D6626E0072E943 /* Info.plist */,
 			);
 			path = NewsMVVM;
+			sourceTree = "<group>";
+		};
+		6A828BD822D667D30072E943 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -362,6 +369,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = H92U9KV5T2;
 				INFOPLIST_FILE = NewsMVVM/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -381,6 +389,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = H92U9KV5T2;
 				INFOPLIST_FILE = NewsMVVM/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
