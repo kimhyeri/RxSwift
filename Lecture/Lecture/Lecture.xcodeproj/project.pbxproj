@@ -39,6 +39,7 @@
 /* Begin PBXFileReference section */
 		4469E9B357DBF5552609BF15 /* Pods-LectureTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LectureTests.debug.xcconfig"; path = "Target Support Files/Pods-LectureTests/Pods-LectureTests.debug.xcconfig"; sourceTree = "<group>"; };
 		6114CF5264221AFA79207D84 /* Pods-LectureTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LectureTests.release.xcconfig"; path = "Target Support Files/Pods-LectureTests/Pods-LectureTests.release.xcconfig"; sourceTree = "<group>"; };
+		6A828BB922D5CFC30072E943 /* TransformingOperators.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = TransformingOperators.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		6A8AC47D22BB6B63004748AB /* Lecture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lecture.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A8AC48022BB6B63004748AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6A8AC48222BB6B63004748AB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -147,6 +148,7 @@
 				6A8AC48722BB6B6B004748AB /* Assets.xcassets */,
 				6A8AC48922BB6B6B004748AB /* LaunchScreen.storyboard */,
 				6A8AC48C22BB6B6B004748AB /* Info.plist */,
+				6A828BB922D5CFC30072E943 /* TransformingOperators.playground */,
 			);
 			path = Lecture;
 			sourceTree = "<group>";
