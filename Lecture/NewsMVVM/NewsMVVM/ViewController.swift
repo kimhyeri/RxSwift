@@ -7,10 +7,13 @@
 //
 
 import UIKit
+import RxSwift
 
 class ViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
+    
+    let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,15 +21,25 @@ class ViewController: UIViewController {
        
         setupTableView()
         setupNavigation()
+        populateNews()
     }
 
-    func setupTableView() {
+    private func setupTableView() {
         tableView.delegate = self
         tableView.dataSource = self
     }
     
-    func setupNavigation() {
+    private func setupNavigation() {
         self.navigationController?.navigationBar.prefersLargeTitles = true
+    }
+    
+    private func populateNews() {
+        guard let urlString = URL(string: "https://newsapi.org/v2/top-headlines?country=us&apiKey=43f3fffb0a0f425e9cb5836dc9ac290f") else { return }
+        let resource = Resource<ArticleResponse>(url: urlString)
+        URLRequest.load(resource: resource)
+            .subscribe(onNext: {
+                print($0)
+            }).disposed(by: disposeBag)
     }
 }
 
