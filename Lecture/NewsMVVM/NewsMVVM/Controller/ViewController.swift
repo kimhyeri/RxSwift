@@ -52,6 +52,7 @@ class ViewController: UIViewController {
     }
 }
 
+// MARK: TableViewDelegate, TableViewDatasource0-
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let article = articleListVM else { return 0 }
@@ -67,11 +68,10 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
             .drive(cell.titleLabel.rx.text)
             .disposed(by: disposeBag)
         
-        
         articleVM.title.asDriver(onErrorJustReturn: "")
             .drive(cell.descriptionLabel.rx.text)
             .disposed(by: disposeBag)
-        return cell
         
+        return cell
     }
 }

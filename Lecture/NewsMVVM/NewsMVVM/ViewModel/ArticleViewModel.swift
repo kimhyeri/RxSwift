@@ -12,6 +12,7 @@ import RxCocoa
 
 // RootViewModel
 // control whole screen
+
 struct ArticleListViewModel {
     let articleVM: [ArticleViewModel]
 }
