@@ -24,4 +24,4 @@ Controller (C) stands for Controller. Controller is mediator between View and Mo
 - ViewModel class performs logic over that data if needed and then sends back that final data to Controller class.  
 - Controller class passes final data to View class and finally View class displays that data on the screen.
 
-![텍스트목록](./MVVM/mvvm.jpeg)
+![ ](/./MVVM/mvvm.jpeg)
